@@ -6,7 +6,9 @@ public class Node {
     private Point point;
     private List<Node> neighbors;
     private double fScore;
+    private double gScore;
     private Node parent;
+    private int distance;
 
     public Node() {}
 
@@ -22,8 +24,14 @@ public class Node {
         this.fScore = fScore;
     }
 
+    public void setgScore(double gScore) { this.gScore = gScore; }
+
     public void setParent(Node parent) {
         this.parent = parent;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 
     public Point getPoint() {
@@ -38,26 +46,21 @@ public class Node {
         return fScore;
     }
 
+    public double getgScore() {
+        return gScore;
+    }
+
     public Node getParent() {
         return parent;
     }
+
+    public int getDistance() { return distance; }
 
     public int getX() {
         return (int)this.getPoint().getX();
     }
 
-    public int getY() {
-        return (int)this.getPoint().getY();
-    }
-
-    public boolean queueContains (PriorityQueue<Node> queue) {
-        boolean ans = false;
-        for (Node n: queue) {
-            if (this.getPoint().equals(n.getPoint()))
-                ans = true;
-        }
-        return ans;
-    }
+    public int getY() { return (int)this.getPoint().getY(); }
 
     public boolean listContains (List<Node> list) {
         boolean ans = false;
